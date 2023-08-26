@@ -9,14 +9,64 @@ function verificar(){
         let fsex   = document.getElementsByName("radsex")// estamds pegando o sexo do formulario(o rad é pe o tipo de input pra essa opção é o "radio") note que a gente tá pegando por Nome não Id, ou seja pra selecionarmos qual sexo se é masc ou fem vamo usar o[] é como se fossemos selecionar elementos de uma array
         let idade  = ano - Number(fano.value)// aqui pegamos o ano da pessoa já fazendo o calculo, olha a gente convertendo pra Number dnv, e ainda tem o value que é pra pegar o valor
         let genero = ""// criamos o gênero mas por enquanto vamo deixar nulo
-        let img    = document.createElement("img")// por questão de aprendizado estamos criando a imagen aqui no js invês de ser no html 
-        img.setAttribute("id","foto")// aqui a gente á adicionando uma id nessa imagen vê qu bacana a sintax primeiro o atributo, dps o nome do atributo
+        let foto = document.getElementById("foto")
+        
     if( fsex[0].checked) {// vericando se for homen olha o [] sendo usado ai e veja o por que deixamos o gênero nulo anteriormente
         genero = " um Homem"
+        if( fsex[0].checked) {// vericando se for homen olha o [] sendo usado ai e veja o por que deixamos o gênero nulo anteriormente
+            genero = " um Homem"
+            
+            if (Number(idade) >= 0 && Number(idade) <= 4) {
+            res.innerHTML = (`Detectamos ${genero} bebê de ${Number(idade)} anos`)
+            foto.src = "bebe-homem.jpg"
         
-    } else {
-        genero = "uma Mulher"
-        
-    }
+        }else if (Number(idade) < 15) {
+                
+                res.innerHTML = (`Detectamos ${genero} criança de ${Number(idade)} anos`)
+                foto.src = "criança-menino.jpg"
+            }else if (Number(idade) > 15 && Number(idade) < 25) {
+                
+                    res.innerHTML = (`Detectamos ${genero} jovem de ${Number(idade)} anos`)
+                    foto.src = "jovem-homem.jpg"
+                
+            } else if (Number(idade) > 25 && Number(idade) < 60) {
+                res.innerHTML = (`Detectamos ${genero} Adulto de ${idade} anos`)
+                foto.src = "homem-adulto.jpg"
+                
+            } else if (Number(idade) > 60) {
+                res.innerHTML = (`Detectamos ${genero} Idoso de ${idade} anos`)
+                foto.src = "homem-veio.jpg"
+            }
+            } 
+            }else if (fsex[1].checked) {
+                genero = "uma mulher"
+                
+                if (Number(idade) >= 0 && Number(idade) <= 4) {
+                    res.innerHTML = (`Detectamos ${genero} bebê de ${Number(idade)} anos`)
+                    foto.src = "bebe-mulher.jpg"
+                
+                }else if (Number(idade) < 15) {
+                        
+                        res.innerHTML = (`Detectamos ${genero} criança de ${Number(idade)} anos`)
+                        foto.src = "criança menina.jpg"
+                    
+                    }else if (Number(idade) > 15 && Number(idade) < 25) {
+                        
+                            res.innerHTML = (`Detectamos ${genero} jovem de ${Number(idade)} anos`)
+                            foto.src = "jovem mulher.jpg"
+                        
+                    
+                        } else if (Number(idade) > 25 && Number(idade) < 60) {
+                        res.innerHTML = (`Detectamos ${genero} Adulta de ${idade} anos`)
+                        foto.src = "homem-adulto.jpg"
+                        
+                    
+                    } else if (Number(idade) > 60) {
+                        res.innerHTML = (`Detectamos ${genero} Idosa de ${idade} anos`)
+                        foto.src = "idosa mulher.jpg"
+                    }
+                
+            }
     }
 } 
+
